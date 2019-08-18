@@ -1,4 +1,7 @@
 const pkg = require('./package')
+const environment = process.env.NODE_ENV || 'development'
+const port = process.env.NUXT_PORT || '8081'
+const BASE_URL = environment === 'production' ? 'http://sagit.top:' + port : 'http://localhost:' + port
 
 module.exports = {
   mode: 'universal',
@@ -38,8 +41,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
@@ -66,7 +68,7 @@ module.exports = {
   },
 
   env: {
-    baseUrl: 'http://localhost:8081'
+    baseUrl: BASE_URL
   },
 
   /*
