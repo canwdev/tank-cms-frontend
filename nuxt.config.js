@@ -21,13 +21,19 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#4caf50' },
 
   /*
   ** Global CSS
   */
   css: [
+    '~/assets/styles/normalize.css',
+    '~/assets/styles/base.styl'
   ],
+  styleResources: {
+    // stylus
+    stylus: ['~/assets/styles/variables.styl']
+  },
 
   /*
   ** Plugins to load before mounting the App
@@ -41,13 +47,26 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    proxy: true
+  },
+  proxy: {
+    '/api_blog': {
+      target: 'http://sagit.top:9002/api',
+      pathRewrite: {
+        '^/api_blog': '/'
+      }
+    }
+  },
+
+  env: {
+    baseUrl: 'http://localhost:8081'
   },
 
   /*
@@ -58,15 +77,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
+
     }
   }
 }

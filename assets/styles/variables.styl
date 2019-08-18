@@ -1,0 +1,18 @@
+$color_theme = #00C48D
+$color_theme_opacity = transparentify($color_theme, $color_theme, 0.3)
+$color_border = rgba(0, 0, 0, 0.2)
+
+$border_radius = 6px
+$transition_fx1 = cubic-bezier(.694,0,.335,1)
+$boxShadow()
+  box-shadow 0 1px 1px 0 rgba(0,0,0,.09)
+  transition box-shadow .25s $transition_fx1
+  &:hover
+    box-shadow 0 2px 10px 0 rgba(0,0,0,.15)
+
+$mobile_min_width = 330px // 618px // 426px
+$mobile_width = 567px // 618px // 426px
+$mobile_height_land = 485px // 手机横屏高度
+$tablet_width = 1024px // 768px
+$pcmin_width = 1450px // 1440px
+$pc2k_width = 2400px // 2560px
