@@ -12,6 +12,7 @@
   import { backToTop } from '~/assets/src/utils'
 
   export default {
+    layout: 'blog',
     components: {
       PostsList, ListPager
     },

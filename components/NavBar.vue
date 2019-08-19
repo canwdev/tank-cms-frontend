@@ -9,8 +9,9 @@
 
         <div class="links-wrap">
           <NLink to="/">首页</NLink>
+          <NLink to="/warthunder">WarThunder UI</NLink>
           <a href="###">分类</a>
-          <a href="###">关于</a>
+          <NLink to="/posts/1">关于</NLink>
         </div>
       </div>
     </div>
@@ -107,12 +108,11 @@
           align-self stretch
           display flex
           align-items center
-          text-align: right
+          text-align: center
           @media screen and (max-width $mobile_width)
             border-left: 1px solid $color_border
             width 60%
             overflow: auto
-            text-align: center
 
           &>a
             display inline-block

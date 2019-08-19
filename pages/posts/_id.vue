@@ -22,6 +22,7 @@
   import { getDetail } from '~/assets/src/api/posts'
 
   export default {
+    layout: 'blog',
     async asyncData({ params }) {
       let postData
       const id = params.id
