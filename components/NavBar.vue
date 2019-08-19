@@ -8,10 +8,9 @@
         </NLink>
 
         <div class="links-wrap">
-          <a href="###">###</a>
-          <a href="###">###</a>
-          <a href="###">###</a>
-          <a href="###">###</a>
+          <NLink to="/">首页</NLink>
+          <a href="###">分类</a>
+          <a href="###">关于</a>
         </div>
       </div>
     </div>
@@ -47,7 +46,7 @@
     position: relative
 
     .nav-height-placeholder
-      height $nav_height
+      height $nav_height + 20px
       margin-bottom: 20px
 
     .global-nav
@@ -58,19 +57,28 @@
       background-color rgba(255, 255, 255, 0.8)
       backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid $color_border
-      $boxShadow()
       transition all .25s $transition_fx1
       &:hover
         background-color #fff
 
       &.fixed
         position: fixed
+        &>.w-container
+          height $nav_height
+          .logo-wrap
+            &>img
+              width ($nav_height - 12px)
+              height ($nav_height - 12px)
+            &>p
+              font-size 18px
 
       &>.w-container
-        height $nav_height
+        height ($nav_height + 20px)
         display flex
         align-items center
         justify-content space-between
+        transition all .25s
+        transition-timing-function $transition_fx1
         @media screen and (max-width $mobile_width)
           padding-right: 0
 
@@ -82,15 +90,18 @@
 
           &:hover
             &>img
-              transform rotate(361deg)
+              transform scale(1.1)
           &>img
-            width ($nav_height - 12px)
-            height ($nav_height - 12px)
+            width $nav_height
+            height $nav_height
             border-radius 50%
-            transition transform 1s
+            transition all .25s
+            transition-timing-function $transition_fx1
           &>p
+            font-size 24px
             font-weight: bold
             margin-left: 10px
+            transition font-size .25s
 
         .links-wrap
           align-self stretch

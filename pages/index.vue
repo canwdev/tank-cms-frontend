@@ -1,22 +1,38 @@
 <template>
   <div class="page-index">
     <PostsList :post-data="postData"></PostsList>
+    <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
   </div>
 </template>
 
 <script>
   import PostsList from '~/components/PostsList'
+  import ListPager from '~/components/ListPager'
   import { getList } from '~/assets/src/api/posts'
+  import { backToTop } from '~/assets/src/utils'
 
   export default {
     components: {
-      PostsList
+      PostsList, ListPager
+    },
+    data: () => ({
+      currentPage: 1
+    }),
+    computed: {
+
+    },
+    watch: {
+      currentPage() {
+        this.updatePostsList()
+        backToTop(window.document)
+      }
     },
     async asyncData() {
       let postData = {}
+      const pageSize = 10
 
       await getList({
-        limit: 12,
+        limit: pageSize,
         offset: 0
       }).then(res => {
         postData = res.data
@@ -25,7 +41,24 @@
       })
 
       return {
-        postData
+        postData,
+        pageSize,
+      }
+    },
+    methods: {
+      updatePostsList() {
+        this.$nuxt.$loading.start()
+
+        getList({
+          limit: this.pageSize,
+          offset: (this.currentPage - 1) * this.pageSize
+        }).then(res => {
+          this.postData = res.data
+        }).catch(e => {
+          console.error(e)
+        }).finally(() => {
+          this.$nuxt.$loading.finish()
+        })
       }
     }
   }

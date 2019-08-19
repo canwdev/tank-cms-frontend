@@ -58,6 +58,7 @@
       justify-content: space-between;
       height: 45px;
       color: #aaa;
+      font-size 14px
 
     >>> .content
       margin: 20px auto;
@@ -65,8 +66,13 @@
       line-height: 1.5;
       color: #212121;
       white-space: pre-line;
+      overflow-x auto
 
       p
         margin: 0;
+
+      img
+        max-width 100%
+        height auto
 
 </style>

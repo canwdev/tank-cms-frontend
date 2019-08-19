@@ -5,7 +5,7 @@
   "author": "canwdev",
   "private": true,
   "scripts": {
-    "dev": "NUXT_HOST=0.0.0.0 NUXT_PORT=8081 nuxt nuxt",
+    "dev": "NUXT_HOST=0.0.0.0 NUXT_PORT=8081 nuxt",
     "dev2": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "NUXT_HOST=0.0.0.0 NUXT_PORT=8081 nuxt start",

@@ -12,6 +12,7 @@
     padding 15px 0
     background rgba(0,0,0,.05)
     text-align: center
+    color #878787
     .copyright
       font-size 12px
 

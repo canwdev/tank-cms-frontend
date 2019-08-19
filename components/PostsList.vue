@@ -1,18 +1,18 @@
 <template>
   <div class="post-list-wrap">
-    <div class="w-container">
 
-      <NLink :to="'posts/'+v.id" v-for="(v, i) in postData.rows" :key="i" class="list-item">
-        <h3>{{ v.title }}</h3>
-        <span class="update-time">{{ v.updatedAt }}</span>
-        <p>{{ v.content }}</p>
-      </NLink>
+    <NLink v-for="(v, i) in postData.rows" :key="i" :to="'posts/'+v.id" class="list-item">
+      <h3>{{ v.title }}</h3>
+      <span class="update-time">{{ formatTime(new Date(v.updatedAt)) }}</span>
+      <p>{{ v.content }}</p>
+    </NLink>
 
-    </div>
   </div>
 </template>
 
 <script>
+  import { formatTime } from '~/assets/src/utils'
+
   export default {
     props: {
       postData: {
@@ -22,6 +22,9 @@
           rows: []
         })
       }
+    },
+    methods: {
+      formatTime
     }
   }
 </script>
