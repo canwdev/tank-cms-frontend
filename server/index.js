@@ -1,5 +1,6 @@
 // fix unable to verify the first certificate
-require('ssl-root-cas').inject()
+var rootCas = require('ssl-root-cas/latest').create();
+require('https').globalAgent.options.ca = rootCas;
 
 const express = require('express')
 const consola = require('consola')

@@ -1,3 +1,6 @@
+// fix unable to verify the first certificate
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
+
 // 封装 axios
 import axios from 'axios'
 
