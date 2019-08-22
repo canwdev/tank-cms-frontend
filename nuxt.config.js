@@ -42,7 +42,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/index.js'
+    '~/plugins/index.js',
+    { src: '~/store/localstorage.js', ssr: false }
   ],
 
   /*
