@@ -68,6 +68,12 @@
       color: #212121;
       white-space: pre-line;
       overflow-x auto
+      pre
+        background #1c2632
+        color #00C48D
+        padding 10px
+        box-sizing border-box
+        border-radius 5px
 
       p
         margin: 0;
