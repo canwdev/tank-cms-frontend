@@ -67,8 +67,9 @@ module.exports = {
   proxy: {
     '/api_blog': {
       target: ONLINE_API_SERVER,
+      secure: false, // 防止HTTPS报错：UNABLE_TO_VERIFY_LEAF_SIGNATURE
       pathRewrite: {
-        '^/api_blog': '/'
+        '^/api_blog': ''
       }
     }
   },
