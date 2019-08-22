@@ -1,3 +1,6 @@
+// fix unable to verify the first certificate
+require('ssl-root-cas').inject()
+
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
