@@ -20,6 +20,8 @@
 <script>
   import { formatTime } from '~/assets/src/utils'
   import { getDetail } from '~/assets/src/api/posts'
+  import hljs from 'highlight.js'
+  import 'highlight.js/styles/a11y-dark.css'
 
   export default {
     layout: 'blog',
@@ -37,6 +39,11 @@
         postData
       }
     },
+    mounted() {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block)
+      })
+    },
     methods: {
       formatTime
     }
@@ -52,6 +59,9 @@
       text-align: center;
       font-size: 23px;
       font-weight: bold;
+      @media screen and (max-width $mobile_width)
+        font-size 20px
+        text-align: left
 
     .description
       display: flex;
@@ -74,11 +84,14 @@
         padding 10px
         box-sizing border-box
         border-radius 5px
+      .hljs
+        padding 0
+        overflow: auto
 
       p
         margin: 0;
 
-      img
+      img, video
         max-width 100%
         height auto
 
