@@ -38,6 +38,7 @@
       border 1px solid $color_border
       text-decoration: none
       $boxShadow()
+      word-break: break-word;
 
       &+.list-item
         margin-top: 10px

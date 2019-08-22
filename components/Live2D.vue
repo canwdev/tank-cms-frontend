@@ -119,6 +119,8 @@
 
   $transition(time=0.3s)
     transition all time cubic-bezier(0.68, -0.55, 0.27, 1.55)
+    @media screen and (max-width $tablet_width)
+      transition all time ease  // 节约移动端性能
 
   .live2d-wrap
     position: fixed
@@ -127,6 +129,9 @@
     width 280px
     height: 430px
     $transition(.5s)
+    @media screen and (max-width $mobile_width)
+      transform-origin right bottom
+      transform scale(0.8)
 
     &.hidden
       height 40px
