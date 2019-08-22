@@ -1,7 +1,7 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
-const BASE_URL = environment === 'production' ? 'http://sagit.top:' + port : 'http://localhost:' + port
+const BASE_URL = environment === 'production' ? 'https://sagit.top:' + port : 'http://localhost:' + port
 
 module.exports = {
   mode: 'universal',
