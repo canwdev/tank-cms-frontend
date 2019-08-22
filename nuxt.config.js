@@ -1,8 +1,10 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
-// 注意：线上地址是实际可访问的地址，而不是被反向代理的原地址
+
+// 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
 const BASE_URL = environment === 'production' ? 'https://sagit.top:8081' : 'http://localhost:' + port
+const ONLINE_API_SERVER = 'https://sagit.top:9002/api'
 
 module.exports = {
   mode: 'universal',
@@ -64,7 +66,7 @@ module.exports = {
   },
   proxy: {
     '/api_blog': {
-      target: 'http://sagit.top:9002/api',
+      target: ONLINE_API_SERVER,
       pathRewrite: {
         '^/api_blog': '/'
       }
