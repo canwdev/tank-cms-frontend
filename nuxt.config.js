@@ -1,7 +1,8 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
-const BASE_URL = environment === 'production' ? 'https://sagit.top:' + port : 'http://localhost:' + port
+// 注意：线上地址是实际可访问的地址，而不是被反向代理的原地址
+const BASE_URL = environment === 'production' ? 'https://sagit.top:8081' : 'http://localhost:' + port
 
 module.exports = {
   mode: 'universal',
