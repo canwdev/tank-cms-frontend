@@ -73,7 +73,8 @@
 </script>
 
 <style lang="stylus" scoped>
-.no-content
-  text-align: center;
+  .page-index
+    .no-content
+      text-align: center;
 /**/
 </style>

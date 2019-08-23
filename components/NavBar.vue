@@ -9,9 +9,9 @@
 
         <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
           <NLink to="/">首页</NLink>
-          <NLink to="/warthunder">WarThunder UI</NLink>
-          <a href="###">分类</a>
+          <!--<a href="###">分类</a>-->
           <NLink to="/posts/1">关于</NLink>
+          <NLink to="/warthunder">WarThunder UI</NLink>
         </div>
 
         <div class="mobile-menu-shade" :class="{open: openMenu}" @click="openMenu = false"></div>
@@ -139,6 +139,7 @@
         .logo-wrap
           display flex
           align-items center
+          text-decoration: none !important;
 
           &:hover
             &>img
