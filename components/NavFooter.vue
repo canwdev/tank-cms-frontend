@@ -1,10 +1,20 @@
 <template>
   <div class="global-footer">
     <div class="w1200">
-      <p class="copyright">&copy; 2019 MyBlog</p>
+      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}</p>
     </div>
   </div>
 </template>
+
+<script>
+  import { BLOG_NAME } from '~/nuxt.config'
+
+  export default {
+    data: () => ({
+      BLOG_NAME
+    })
+  }
+</script>
 
 <style lang="stylus" scoped>
   .global-footer

@@ -4,7 +4,7 @@
       <div class="w-container" :class="{open: openMenu}">
         <NLink to="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
-          <p>MyBlog</p>
+          <p>{{ BLOG_NAME }}</p>
         </NLink>
 
         <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
@@ -26,8 +26,11 @@
 </template>
 
 <script>
+  import { BLOG_NAME } from '~/nuxt.config'
+
   export default {
     data: () => ({
+      BLOG_NAME,
       isFixed: false,
       openMenu: false
     }),
@@ -88,6 +91,7 @@
 
   .global-nav-wrap
     position: relative
+    z-index 999
 
     .nav-height-placeholder
       height $nav_height + 20px

@@ -12,6 +12,7 @@
     </div>
     <div v-else class="post-detail-wrap">
       <h1 class="title">¯\_(ツ)_/¯</h1>
+      <div class="description">内容加载失败！</div>
     </div>
 
   </div>
