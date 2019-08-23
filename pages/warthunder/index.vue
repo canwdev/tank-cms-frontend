@@ -3,7 +3,7 @@
     <div class="war-thunder-wrap">
       <div class="bg-layer" :class="show_techtree?'bg-darken':''">
         <div class="bg-layer-item bg-video">
-          <video :src="backgroundVideo" autoplay loop></video>
+          <video :src="backgroundVideo" autoplay loop muted></video>
         </div>
         <div class="bg-layer-item bg-shadow"></div>
       </div>
@@ -35,7 +35,8 @@
 </template>
 
 <script>
-  import { getWTList } from '~/assets/src/api/warthunder'
+  // import { getWTList } from '~/assets/src/api/warthunder'
+  import { getDetail } from '~/assets/src/api/posts'
   import SlideInUp from '~/components/Animation/SlideInUp'
   import MainMenu from '~/components/WarThunder/MainMenu'
   import ObjectDetail from '~/components/WarThunder/ObjectDetail'
@@ -55,11 +56,11 @@
     data: () => ({
       wtData: {},
       show_techtree: true,
-      backgroundVideo: 'http://localhost:3000/war_thunder_heroes_trailer_0sfA-NsbzJY_1080p.mp4'
+      backgroundVideo: 'https://sagit.top:9002/upload/upload_20190823165306.mp4'
     }),
     mounted() {
-      getWTList().then(res => {
-        this.wtData = res.data
+      getDetail({ id: 43 }).then(res => {
+        this.wtData = JSON.parse(res.data.content)
       }).catch(e => {
         console.error(e)
       })
@@ -136,7 +137,7 @@
     &.bg-darken
       .bg-shadow
         background rgba(0, 0, 0, 0.35)
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(1px);
 
   .fg-wrap
     position fixed

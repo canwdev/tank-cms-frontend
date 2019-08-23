@@ -37,7 +37,7 @@
     },
     data() {
       return {
-        selected_country_index: 1
+        selected_country_index: 2
       }
     },
     computed: {
