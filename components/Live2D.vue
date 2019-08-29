@@ -177,7 +177,6 @@
 
     canvas#live2d
       cursor: pointer
-      opacity 0
       $transition()
 
     .message
