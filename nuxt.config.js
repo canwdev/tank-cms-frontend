@@ -2,7 +2,7 @@ const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
 
-import { BLOG_NAME } from './assets/src/common'
+const BLOG_NAME = require('./assets/src/common').BLOG_NAME
 
 const isProd = environment === 'production'
 // 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
