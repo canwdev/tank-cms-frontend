@@ -7,11 +7,9 @@
 </template>
 
 <script>
-  import { BLOG_NAME } from '../assets/src/common'
-
   export default {
     data: () => ({
-      BLOG_NAME
+      BLOG_NAME: 'Can\'s Blog'
     })
   }
 </script>

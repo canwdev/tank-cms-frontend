@@ -2,8 +2,6 @@ const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
 
-const BLOG_NAME = require('./assets/src/common').BLOG_NAME
-
 const isProd = environment === 'production'
 // 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
 const BASE_URL = isProd ? 'https://sagit.top:8081' : 'http://localhost:' + port
@@ -16,7 +14,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: BLOG_NAME,
+    title: 'Can\'s Blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
