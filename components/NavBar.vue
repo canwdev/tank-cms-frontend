@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import { BLOG_NAME } from '~/nuxt.config'
+  import { BLOG_NAME } from '../assets/src/common'
 
   export default {
     data: () => ({

@@ -2,13 +2,14 @@ const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081'
 
-const BLOG_NAME = 'Can\'s Blog'
+import { BLOG_NAME } from './assets/src/common'
+
+const isProd = environment === 'production'
 // 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
-const BASE_URL = environment === 'production' ? 'https://sagit.top:8081' : 'http://localhost:' + port
-const ONLINE_API_SERVER = 'https://sagit.top:9002/api'
+const BASE_URL = isProd ? 'https://sagit.top:8081' : 'http://localhost:' + port
+const ONLINE_API_SERVER = isProd ? 'https://sagit.top:9002/api' : 'http://localhost:3001/api'
 
 module.exports = {
-  BLOG_NAME,
   mode: 'universal',
 
   /*

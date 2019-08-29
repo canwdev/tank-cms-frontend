@@ -40,10 +40,7 @@
       $boxShadow()
       word-break: break-word;
       transition all .25s
-      &:hover
-        transform scale(1.02)
-      &:active
-        transform scale(0.98)
+
       &+.list-item
         margin-top: 10px
 
