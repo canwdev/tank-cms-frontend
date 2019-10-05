@@ -1,10 +1,10 @@
 <template>
   <div class="global-footer">
     <div class="w1200">
-      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}</p>
+      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}, AutoDeploy</p>
     </div>
   </div>
-</template>
+</template>s
 
 <script>
   export default {
