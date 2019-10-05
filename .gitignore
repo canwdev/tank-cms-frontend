@@ -84,4 +84,7 @@ dist
 sw.*
 
 
-prod.tar.gz
+*.tar.gz
+*.tar
+*.7z
+*.zip
