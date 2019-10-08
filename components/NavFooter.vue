@@ -1,7 +1,7 @@
 <template>
   <div class="global-footer">
     <div class="w1200">
-      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}, Automate deploy version</p>
+      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}, Automate deploy version 02</p>
     </div>
   </div>
 </template>s
