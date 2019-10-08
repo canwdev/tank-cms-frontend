@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-layout">
     <NavBar></NavBar>
 
     <div class="w-container">
@@ -25,8 +25,16 @@
 </script>
 
 <style lang="stylus" scoped>
-  *
-    line-height: 1.4
+  .blog-layout
+    min-height 100vh
+    background url("~assets/images/blog/bg.png") no-repeat center/cover
+    background-attachment fixed
+    .w-container
+      min-height calc(100vh - 166px)
+      @media screen and (max-width $mobile_width)
+        min-height calc(100vh - 146px)
+    *
+      line-height: 1.4
 
   /**/
 </style>

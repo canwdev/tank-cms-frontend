@@ -1,7 +1,14 @@
 <template>
   <div class="page-index">
-    <PostsList :post-data="postData"></PostsList>
-    <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
+
+    <div v-if="postData.count > 0">
+      <PostsList :post-data="postData"></PostsList>
+      <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
+    </div>
+    <div v-else class="no-content">
+      暂时没有内容哟～
+    </div>
+
   </div>
 </template>
 
@@ -66,6 +73,8 @@
 </script>
 
 <style lang="stylus" scoped>
-
+  .page-index
+    .no-content
+      text-align: center;
 /**/
 </style>

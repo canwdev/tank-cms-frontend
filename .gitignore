@@ -82,3 +82,9 @@ dist
 
 # Service worker
 sw.*
+
+
+*.tar.gz
+*.tar
+*.7z
+*.zip

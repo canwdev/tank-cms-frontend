@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  const PAGE_GROUP_NUM = 5
   export default {
     props: {
       pageSize: {
@@ -21,12 +22,12 @@
       },
       total: {
         type: Number,
-        default: 188
+        default: 1
       }
     },
     data: () => ({
       mCurrentPage: 1,
-      mSize: 10
+      mSize: 5
     }),
     computed: {
       pagesCount() {
@@ -49,7 +50,7 @@
         let curGroup = 0
         for (let i = 1; i <= count; i++) {
           groups[curGroup].push(i)
-          if (i % 10 === 0) {
+          if (i % PAGE_GROUP_NUM === 0) {
             curGroup++
           }
         }

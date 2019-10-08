@@ -4,14 +4,14 @@
       <div class="w-container" :class="{open: openMenu}">
         <NLink to="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
-          <p>MyBlog</p>
+          <p>{{ BLOG_NAME }}</p>
         </NLink>
 
         <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
           <NLink to="/">首页</NLink>
-          <NLink to="/warthunder">WarThunder UI</NLink>
-          <a href="###">分类</a>
+          <!--<a href="###">分类</a>-->
           <NLink to="/posts/1">关于</NLink>
+          <NLink to="/warthunder">WarThunder UI</NLink>
         </div>
 
         <div class="mobile-menu-shade" :class="{open: openMenu}" @click="openMenu = false"></div>
@@ -28,6 +28,7 @@
 <script>
   export default {
     data: () => ({
+      BLOG_NAME: 'Can\'s Blog',
       isFixed: false,
       openMenu: false
     }),
@@ -88,6 +89,7 @@
 
   .global-nav-wrap
     position: relative
+    z-index 999
 
     .nav-height-placeholder
       height $nav_height + 20px
@@ -135,6 +137,7 @@
         .logo-wrap
           display flex
           align-items center
+          text-decoration: none !important;
 
           &:hover
             &>img

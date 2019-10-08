@@ -16,6 +16,7 @@
   import { mapState } from 'vuex'
   import axios from 'axios'
   import load from '~/assets/src/utils/dynamicLoadScript'
+  import { saveHitokoto } from '../assets/src/api/tools'
 
   export default {
     data: () => ({
@@ -70,13 +71,20 @@
         if (this.loadingHitokoto) return
         this.loadingHitokoto = true
 
-        const types = ['a', 'b', 'c']
-        const type = types[Math.floor(Math.random() * types.length)]
-        axios.get(`https://v1.hitokoto.cn/?c=${type}`).then(res => {
+        // const types = ['a', 'b', 'c']
+        // const type = types[Math.floor(Math.random() * types.length)]
+        // axios.get(`https://v1.hitokoto.cn/?c=${type}`).then(res => {
+        axios.get(`https://v1.hitokoto.cn`).then(res => {
           setTimeout(() => {
             this.hitokoto = res.data.hitokoto
             this.showHitokoto = true
           }, 100) // 防止动画一闪而过
+
+          // 保存数据到服务器
+          saveHitokoto({
+            key: res.data.id,
+            value: JSON.stringify(res.data)
+          })
 
           // n秒后自动隐藏
           this.fetchTimeout = setTimeout(() => {

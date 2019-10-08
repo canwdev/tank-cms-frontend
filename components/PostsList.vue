@@ -39,6 +39,7 @@
       text-decoration: none
       $boxShadow()
       word-break: break-word;
+      transition all .25s
 
       &+.list-item
         margin-top: 10px

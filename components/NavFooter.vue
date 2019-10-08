@@ -1,10 +1,18 @@
 <template>
   <div class="global-footer">
     <div class="w1200">
-      <p class="copyright">&copy; 2019 MyBlog, Automate build version</p>
+      <p class="copyright">&copy; 2019 {{ BLOG_NAME }}, AutoDeploy</p>
     </div>
   </div>
-</template>
+</template>s
+
+<script>
+  export default {
+    data: () => ({
+      BLOG_NAME: 'Can\'s Blog'
+    })
+  }
+</script>
 
 <style lang="stylus" scoped>
   .global-footer

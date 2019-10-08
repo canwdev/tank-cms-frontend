@@ -1,7 +1,3 @@
-// fix unable to verify the first certificate
-var rootCas = require('ssl-root-cas/latest').create();
-require('https').globalAgent.options.ca = rootCas;
-
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
