@@ -1,1 +1,3 @@
-export const SITE_TITLE = 'Can\'s Blog'
+module.exports = {
+  SITE_TITLE: 'Can\'s Blog'
+}
