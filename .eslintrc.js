@@ -26,7 +26,7 @@ module.exports = {
   },
   //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
-    "vue/max-attributes-per-line": [2, {
+    "vue/max-attributes-per-line": [1, {
       "singleline": 10,
       "multiline": {
         "max": 1,
@@ -40,7 +40,7 @@ module.exports = {
     "vue/name-property-casing": ["error", "PascalCase"],
     "vue/no-v-html": "off",
     'accessor-pairs': 2,
-    'arrow-spacing': [2, {
+    'arrow-spacing': [1, {
       'before': true,
       'after': true
     }],
@@ -51,8 +51,8 @@ module.exports = {
     'camelcase': [0, {
       'properties': 'always'
     }],
-    'comma-dangle': [2, 'never'],
-    'comma-spacing': [2, {
+    'comma-dangle': [1, 'never'],
+    'comma-spacing': [1, {
       'before': false,
       'after': true
     }],
@@ -60,7 +60,7 @@ module.exports = {
     'constructor-super': 2,
     'curly': [2, 'multi-line'],
     'dot-location': [2, 'property'],
-    'eol-last': 2,
+    'eol-last': 1,
     'eqeqeq': ["error", "always", {"null": "ignore"}],
     'generator-star-spacing': [2, {
       'before': true,
@@ -71,11 +71,11 @@ module.exports = {
     //   'SwitchCase': 1
     // }],
     'jsx-quotes': [2, 'prefer-single'],
-    'key-spacing': [2, {
+    'key-spacing': [1, {
       'beforeColon': false,
       'afterColon': true
     }],
-    'keyword-spacing': [2, {
+    'keyword-spacing': [1, {
       'before': true,
       'after': true
     }],
@@ -97,7 +97,7 @@ module.exports = {
     'no-dupe-keys': 2,
     'no-duplicate-case': 2,
     'no-empty-character-class': 2,
-    'no-empty-pattern': 2,
+    'no-empty-pattern': 1,
     'no-eval': 2,
     'no-ex-assign': 2,
     'no-extend-native': 2,
@@ -121,7 +121,7 @@ module.exports = {
     'no-mixed-spaces-and-tabs': 2,
     'no-multi-spaces': 2,
     'no-multi-str': 2,
-    'no-multiple-empty-lines': [2, {
+    'no-multiple-empty-lines': [1, {
       'max': 1
     }],
     'no-native-reassign': 2,
@@ -175,25 +175,25 @@ module.exports = {
         ':': 'before'
       }
     }],
-    'padded-blocks': [2, 'never'],
-    'quotes': [2, 'single', {
+    'padded-blocks': [1, 'never'],
+    'quotes': [1, 'single', {
       'avoidEscape': true,
       'allowTemplateLiterals': true
     }],
-    'semi': [2, 'never'],
-    'semi-spacing': [2, {
+    'semi': [1, 'never'],
+    'semi-spacing': [1, {
       'before': false,
       'after': true
     }],
-    'space-before-blocks': [2, 'always'],
-    'space-before-function-paren': [2, 'never'],
-    'space-in-parens': [2, 'never'],
-    'space-infix-ops': 2,
+    'space-before-blocks': [1, 'always'],
+    'space-before-function-paren': [1, 'never'],
+    'space-in-parens': [1, 'never'],
+    'space-infix-ops': 1,
     'space-unary-ops': [2, {
       'words': true,
       'nonwords': false
     }],
-    'spaced-comment': [2, 'always', {
+    'spaced-comment': [1, 'always', {
       'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
     }],
     'template-curly-spacing': [2, 'never'],
@@ -202,11 +202,11 @@ module.exports = {
     'wrap-iife': [2, 'any'],
     'yield-star-spacing': [2, 'both'],
     'yoda': [2, 'never'],
-    'prefer-const': 2,
+    'prefer-const': 1,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'object-curly-spacing': [2, 'always', {
-      objectsInObjects: false
-    }],
+    // 'object-curly-spacing': [2, 'always', {
+    //   objectsInObjects: false
+    // }],
     'array-bracket-spacing': [2, 'never']
   }
 }

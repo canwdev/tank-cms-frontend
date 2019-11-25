@@ -56,7 +56,7 @@
     data: () => ({
       wtData: {},
       show_techtree: true,
-      backgroundVideo: 'https://zencode.top:9002/upload/upload_20190823165306.mp4'
+      backgroundVideo: null
     }),
     mounted() {
       getDetail({ id: 43 }).then(res => {

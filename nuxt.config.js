@@ -1,11 +1,12 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
-const port = process.env.NUXT_PORT || '8081'
+const port = process.env.NUXT_PORT || '8081' // Nuxt 服务端口
 
-const isProd = environment === 'production'
+const isProduction = environment === 'production'
 // 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
-const BASE_URL = isProd ? 'https://zencode.top:8081' : 'http://localhost:' + port
-const ONLINE_API_SERVER = isProd ? 'https://zencode.top:8099/api' : 'http://localhost:3001/api'
+const BASE_URL = isProduction ? `https://zencode.top:${port}` : `http://localhost:${port}`
+// 后端服务器地址
+const API_SERVER_URL = isProduction ? 'https://zencode.top:8099/api' : 'http://localhost:3001/api'
 
 module.exports = {
   mode: 'universal',
@@ -67,7 +68,7 @@ module.exports = {
   },
   proxy: {
     '/api_blog': {
-      target: ONLINE_API_SERVER,
+      target: API_SERVER_URL,
       secure: false, // 防止HTTPS报错：UNABLE_TO_VERIFY_LEAF_SIGNATURE
       pathRewrite: {
         '^/api_blog': ''

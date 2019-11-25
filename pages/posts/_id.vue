@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="post-detail-root">
 
     <div v-if="postData" class="post-detail-wrap">
       <h1 class="title">{{ postData.title }}</h1>
@@ -8,7 +8,7 @@
         <span v-if="postData.update_time">更新时间：{{ formatTime(new Date(postData.updatedAt)) }}</span>
         <span v-else>发布时间：{{ formatTime(new Date(postData.createdAt)) }}</span>
       </div>
-      <div class="content" v-html="postData.content"></div>
+      <div class="content markdown-body" v-html="content"></div>
     </div>
     <div v-else class="post-detail-wrap">
       <h1 class="title">¯\_(ツ)_/¯</h1>
@@ -21,11 +21,25 @@
 <script>
   import { formatTime } from '~/assets/src/utils'
   import { getDetail } from '~/assets/src/api/posts'
+  const md = require('markdown-it')({
+    html: true,
+    breaks: true,
+    linkify: true,
+  })
   import hljs from 'highlight.js'
   import 'highlight.js/styles/a11y-dark.css'
+  import '~/assets/styles/github-markdown.css'
 
   export default {
     layout: 'blog',
+    computed: {
+      content() {
+        if (this.postData.isMarkdown) {
+          return md.render(this.postData.content)
+        }
+        return this.postData.content
+      }
+    },
     async asyncData({ params }) {
       let postData
       const id = params.id
@@ -52,6 +66,10 @@
 </script>
 
 <style lang="stylus" scoped>
+  .post-detail-root
+    padding 20px 0
+    background #fff
+
   .post-detail-wrap
     max-width: 800px;
     margin: 0 auto;
