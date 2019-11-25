@@ -1,6 +1,9 @@
 const LS_SETTINGS = 'website-settings'
 
 export const state = () => ({
+  siteConfig: {
+    title: 'Can\'s Blog'
+  },
   settings: {
     hideLive2D: true
   }

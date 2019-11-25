@@ -4,7 +4,7 @@
       <div class="w-container" :class="{open: openMenu}">
         <NLink to="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
-          <p>{{ BLOG_NAME }}</p>
+          <p>{{ title }}</p>
         </NLink>
 
         <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
@@ -26,9 +26,11 @@
 </template>
 
 <script>
+  import {SITE_TITLE} from '~/assets/js/config'
+
   export default {
     data: () => ({
-      BLOG_NAME: 'Can\'s Blog',
+      title: SITE_TITLE,
       isFixed: false,
       openMenu: false
     }),
