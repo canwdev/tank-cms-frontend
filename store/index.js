@@ -2,7 +2,7 @@ const LS_SETTINGS = 'website-settings'
 
 export const state = () => ({
   settings: {
-    hideLive2D: false
+    hideLive2D: true
   }
 })
 
