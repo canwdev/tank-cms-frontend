@@ -2,10 +2,10 @@
   <div class="global-nav-wrap">
     <div class="global-nav" :class="{fixed: isFixed}">
       <div class="w-container" :class="{open: openMenu}">
-        <NLink to="/" class="logo-wrap">
+        <a href="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
           <p>{{ title }}</p>
-        </NLink>
+        </a>
 
         <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
           <NLink to="/">首页</NLink>

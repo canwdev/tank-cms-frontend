@@ -29,25 +29,29 @@
     components: {
       PostsList, ListPager, Live2D
     },
-    data: () => ({
-      currentPage: 1
-    }),
-    computed: {
-
-    },
     watch: {
-      currentPage() {
+      currentPage(nv) {
         this.updatePostsList()
+
+        // 更新router query
+        this.$router.replace({
+          path: this.$route.path, query: {
+            ...this.$route.query,
+            page: nv
+          }
+        })
+
         backToTop(window.document)
       }
     },
-    async asyncData() {
+    async asyncData({ route }) {
       let postData = {}
       const pageSize = 10
+      const currentPage = parseInt(route.query.page) || 1
 
       await getList({
         limit: pageSize,
-        offset: 0
+        offset: (currentPage - 1) * pageSize
       }).then(res => {
         postData = res.data
       }).catch(e => {
@@ -55,6 +59,7 @@
       })
 
       return {
+        currentPage,
         postData,
         pageSize,
       }
@@ -82,5 +87,6 @@
   .page-index
     .no-content
       text-align: center;
-/**/
+
+  /**/
 </style>
