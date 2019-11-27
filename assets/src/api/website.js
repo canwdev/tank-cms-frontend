@@ -1,6 +1,13 @@
 import request from './request'
 
-export function getList(params) {
+export function getWebsiteMenu() {
+  return request({
+    url: '/menu/list',
+    method: 'get'
+  })
+}
+
+export function getPostsList(params) {
   return request({
     url: '/post/list',
     method: 'get',
@@ -8,7 +15,7 @@ export function getList(params) {
   })
 }
 
-export function getDetail(params) {
+export function getPostDetail(params) {
   return request({
     url: '/post/detail',
     method: 'get',

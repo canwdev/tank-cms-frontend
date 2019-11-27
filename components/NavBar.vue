@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import {SITE_TITLE} from '~/assets/js/config'
+  import {SITE_TITLE} from '~/assets/src/utils/config'
 
   export default {
     data: () => ({

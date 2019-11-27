@@ -20,7 +20,7 @@
 <script>
   import PostsList from '~/components/PostsList'
   import ListPager from '~/components/ListPager'
-  import { getList } from '~/assets/src/api/posts'
+  import { getPostsList } from '~/assets/src/api/website'
   import { backToTop } from '~/assets/src/utils'
   import Live2D from '~/components/Live2D'
 
@@ -49,7 +49,7 @@
       const pageSize = 10
       const currentPage = parseInt(route.query.page) || 1
 
-      await getList({
+      await getPostsList({
         limit: pageSize,
         offset: (currentPage - 1) * pageSize
       }).then(res => {
@@ -68,7 +68,7 @@
       updatePostsList() {
         this.$nuxt.$loading.start()
 
-        getList({
+        getPostsList({
           limit: this.pageSize,
           offset: (this.currentPage - 1) * this.pageSize
         }).then(res => {

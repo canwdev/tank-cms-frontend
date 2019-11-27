@@ -23,7 +23,7 @@
 
 <script>
   import { formatTime } from '~/assets/src/utils'
-  import { getDetail } from '~/assets/src/api/posts'
+  import { getPostDetail } from '~/assets/src/api/website'
   const md = require('markdown-it')({
     html: true,
     breaks: true,
@@ -47,7 +47,7 @@
       let postData
       const id = params.id
 
-      await getDetail({ id }).then(res => {
+      await getPostDetail({ id }).then(res => {
         postData = res.data
       }).catch(e => {
         console.error(e)

@@ -36,7 +36,7 @@
 
 <script>
   // import { getWTList } from '~/assets/src/api/warthunder'
-  import { getDetail } from '~/assets/src/api/posts'
+  import { getPostDetail } from '~/assets/src/api/website'
   import SlideInUp from '~/components/Animation/SlideInUp'
   import MainMenu from '~/components/WarThunder/MainMenu'
   import ObjectDetail from '~/components/WarThunder/ObjectDetail'
@@ -59,7 +59,7 @@
       backgroundVideo: null
     }),
     mounted() {
-      getDetail({ id: 43 }).then(res => {
+      getPostDetail({ id: 43 }).then(res => {
         this.wtData = JSON.parse(res.data.content)
       }).catch(e => {
         console.error(e)

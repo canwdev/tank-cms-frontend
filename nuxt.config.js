@@ -1,7 +1,7 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const port = process.env.NUXT_PORT || '8081' // Nuxt 服务端口
-const { SITE_TITLE } = require('./assets/js/config')
+const { SITE_TITLE } = require('./assets/src/utils/config')
 
 const isProduction = environment === 'production'
 // 注意：线上BASE_URL地址是实际可访问的地址，而不是被反向代理的原地址
