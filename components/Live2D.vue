@@ -1,5 +1,5 @@
 <template>
-  <no-ssr>
+  <client-only>
     <div class="live2d-wrap" :class="{hidden}">
       <div class="action-group">
         <button @click="hideLive2D">{{ hidden ? '显示Live2D' : '隐藏Live2D' }}</button>
@@ -9,7 +9,7 @@
       </transition>
       <canvas id="live2d" width="280" height="500" class="live2d" @click.prevent="fetchHitokoto"></canvas>
     </div>
-  </no-ssr>
+  </client-only>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <no-ssr>
+  <client-only>
     <div class="war-thunder-wrap">
       <div class="bg-layer" :class="show_techtree?'bg-darken':''">
         <div class="bg-layer-item bg-video">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-  </no-ssr>
+  </client-only>
 </template>
 
 <script>
