@@ -1,7 +1,7 @@
 <template>
   <div class="global-footer">
     <div class="w1200">
-      <p class="copyright">&copy; 2019 {{ title }}, Powered by Nuxt.js</p>
+      <p class="copyright">&copy; {{ new Date().getFullYear() }} {{ title }}, Powered by Nuxt.js</p>
     </div>
   </div>
 </template>s

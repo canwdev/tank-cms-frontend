@@ -2,11 +2,7 @@
   <div class="blog-layout">
     <NavBar></NavBar>
 
-    <div class="w-container">
-      <nuxt />
-    </div>
-
-    <Live2D></Live2D>
+    <nuxt />
 
     <NavFooter></NavFooter>
   </div>
@@ -15,11 +11,10 @@
 <script>
   import NavBar from '~/components/NavBar'
   import NavFooter from '~/components/NavFooter'
-  import Live2D from '~/components/Live2D'
 
   export default {
     components: {
-      NavBar, NavFooter, Live2D
+      NavBar, NavFooter
     }
   }
 </script>

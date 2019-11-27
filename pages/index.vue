@@ -1,15 +1,20 @@
 <template>
-  <div class="page-index">
+  <div class="w-container">
+    <div class="page-index">
 
-    <div v-if="postData.count > 0">
-      <PostsList :post-data="postData"></PostsList>
-      <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
-    </div>
-    <div v-else class="no-content">
-      暂时没有内容哟～
+      <div v-if="postData.count > 0">
+        <PostsList :post-data="postData"></PostsList>
+        <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
+      </div>
+      <div v-else class="no-content">
+        暂时没有内容哟～
+      </div>
+
     </div>
 
+    <Live2D></Live2D>
   </div>
+
 </template>
 
 <script>
@@ -17,11 +22,12 @@
   import ListPager from '~/components/ListPager'
   import { getList } from '~/assets/src/api/posts'
   import { backToTop } from '~/assets/src/utils'
+  import Live2D from '~/components/Live2D'
 
   export default {
     layout: 'blog',
     components: {
-      PostsList, ListPager
+      PostsList, ListPager, Live2D
     },
     data: () => ({
       currentPage: 1

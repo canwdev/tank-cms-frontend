@@ -1,3 +1,3 @@
 module.exports = {
-  SITE_TITLE: 'Can\'s Blog'
+  SITE_TITLE: '解构科技'
 }

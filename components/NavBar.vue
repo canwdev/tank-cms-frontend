@@ -104,8 +104,8 @@
       top: 0
       left: 0
       right: 0
-      background-color rgba(255, 255, 255, 0.8)
-      backdrop-filter: saturate(180%) blur(20px);
+      background-color #fff
+      // backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid $color_border
       transition all .25s $transition_fx2
       &:hover
@@ -142,11 +142,11 @@
           text-decoration: none !important;
 
           &:hover
-            &>img
-              transform scale(1.1)
+            opacity 0.9
+
           &:active
-            &>img
-              transform scale(0.9)
+            opacity: 1;
+
           &>img
             width $nav_height
             height $nav_height

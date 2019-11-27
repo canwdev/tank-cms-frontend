@@ -37,9 +37,9 @@
       padding 20px
       border 1px solid $color_border
       text-decoration: none
-      $boxShadow()
       word-break: break-word;
-      transition all .25s
+      &:hover
+        border-color $color_theme
 
       &+.list-item
         margin-top: 10px

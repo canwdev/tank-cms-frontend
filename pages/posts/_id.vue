@@ -1,21 +1,24 @@
 <template>
-  <div class="post-detail-root">
+  <div class="w-container">
+    <div class="post-detail-root">
 
-    <div v-if="postData" class="post-detail-wrap">
-      <h1 class="title">{{ postData.title }}</h1>
-      <div class="description">
-        <span>作者：{{ postData.author_ids || '/' }}</span>
-        <span v-if="postData.update_time">更新时间：{{ formatTime(new Date(postData.updatedAt)) }}</span>
-        <span v-else>发布时间：{{ formatTime(new Date(postData.createdAt)) }}</span>
+      <div v-if="postData" class="post-detail-wrap">
+        <h1 class="title">{{ postData.title }}</h1>
+        <div class="description">
+          <span>作者：{{ postData.author_ids || '/' }}</span>
+          <span v-if="postData.update_time">更新时间：{{ formatTime(new Date(postData.updatedAt)) }}</span>
+          <span v-else>发布时间：{{ formatTime(new Date(postData.createdAt)) }}</span>
+        </div>
+        <div class="content markdown-body" v-html="content"></div>
       </div>
-      <div class="content markdown-body" v-html="content"></div>
-    </div>
-    <div v-else class="post-detail-wrap">
-      <h1 class="title">¯\_(ツ)_/¯</h1>
-      <div class="description">内容加载失败！</div>
-    </div>
+      <div v-else class="post-detail-wrap">
+        <h1 class="title">¯\_(ツ)_/¯</h1>
+        <div class="description">内容加载失败！</div>
+      </div>
 
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -67,8 +70,9 @@
 
 <style lang="stylus" scoped>
   .post-detail-root
-    padding 20px 0
+    padding 20px 10px
     background #fff
+    border 1px solid $color_border
 
   .post-detail-wrap
     max-width: 800px;
