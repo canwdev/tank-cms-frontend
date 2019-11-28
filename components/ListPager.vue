@@ -1,12 +1,12 @@
 <template>
   <div class="pager">
     <button v-show="pagesCount > mSize" :disabled="mCurrentPage === 1" @click="updateCurrentPage(mCurrentPage - mSize)">«</button>
-    <button :disabled="mCurrentPage === 1" @click="updateCurrentPage('prev')">‹</button>
+    <button :disabled="mCurrentPage === 1" @click="updateCurrentPage('prev')">←</button>
     <div class="page-items"><button v-for="v in pageList" :key="v" :class="{active: v === mCurrentPage}" @click="updateCurrentPage(v)">{{ v }}</button></div>
-    <button :disabled="mCurrentPage === pagesCount" @click="updateCurrentPage('next')">›</button>
+    <button :disabled="mCurrentPage === pagesCount" @click="updateCurrentPage('next')">→</button>
     <button v-show="pagesCount > mSize" :disabled="mCurrentPage === pagesCount" @click="updateCurrentPage(mCurrentPage + mSize)">»</button>
   </div>
-</template>
+</template>←→
 
 <script>
   const PAGE_GROUP_NUM = 5
@@ -96,7 +96,7 @@
     text-align: center;
     margin 30px auto
     button
-      line-height: 1.2
+      line-height: 1.5
       font-size 14px
       min-width 35px
       background #fff

@@ -34,7 +34,6 @@
   import '~/assets/styles/github-markdown.css'
 
   export default {
-    layout: 'blog',
     computed: {
       content() {
         if (this.postData.isMarkdown) {

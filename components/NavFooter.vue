@@ -15,7 +15,8 @@
                 v-for="item in root.children"
                 :key="item.id"
               >
-                <NLink :to="item.url">{{item.title}}</NLink>
+                <a v-if="isOutLink(item.url)" :href="item.url">{{ item.title }}</a>
+                <NLink v-else :to="item.url">{{ item.title }}</NLink>
               </li>
             </ul>
           </div>
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+  import {isOutLink} from '~/assets/src/utils'
   import {mapState} from 'vuex'
   import { SITE_TITLE } from '~/assets/src/utils/config'
 
@@ -43,6 +45,9 @@
     },
     computed: {
       ...mapState(['websiteMenu'])
+    },
+    methods: {
+      isOutLink
     }
   }
 </script>

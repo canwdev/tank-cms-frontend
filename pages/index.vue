@@ -1,12 +1,16 @@
 <template>
   <div class="w-container">
     <div class="page-index">
-      <div v-if="postData.count > 0">
-        <PostsList :post-data="postData"></PostsList>
-        <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
+
+      <div class="index-left">
+
+        <div class="index-banner">banner</div>
+        <div class="index-main">main1</div>
+        <div class="index-main">main2</div>
+
       </div>
-      <div v-else class="no-content">
-        暂时没有内容哟～
+      <div class="index-right">
+        <div class="index-sidebar">sidebar</div>
       </div>
 
     </div>
@@ -15,74 +19,55 @@
 </template>
 
 <script>
-  import PostsList from '~/components/PostsList'
-  import ListPager from '~/components/ListPager'
-  import { getPostsList } from '~/assets/src/api/website'
-  import { backToTop } from '~/assets/src/utils'
-
   export default {
-    layout: 'blog',
-    components: {
-      PostsList, ListPager
-    },
+    components: {},
     async asyncData({ route }) {
-      let postData = {}
-      const pageSize = 10
-      const currentPage = parseInt(route.query.page) || 1
 
-      await getPostsList({
-        limit: pageSize,
-        offset: (currentPage - 1) * pageSize
-      }).then(res => {
-        postData = res.data
-      }).catch(e => {
-        console.error(e)
-      })
-
-      return {
-        currentPage,
-        postData,
-        pageSize
-      }
     },
-    watch: {
-      currentPage(nv) {
-        this.updatePostsList()
-
-        // 更新router query
-        this.$router.replace({
-          path: this.$route.path, query: {
-            ...this.$route.query,
-            page: nv
-          }
-        })
-
-        backToTop(window.document)
-      }
-    },
-    methods: {
-      updatePostsList() {
-        this.$nuxt.$loading.start()
-
-        getPostsList({
-          limit: this.pageSize,
-          offset: (this.currentPage - 1) * this.pageSize
-        }).then(res => {
-          this.postData = res.data
-        }).catch(e => {
-          console.error(e)
-        }).finally(() => {
-          this.$nuxt.$loading.finish()
-        })
-      }
-    }
+    watch: {},
+    methods: {}
   }
 </script>
 
 <style lang="stylus" scoped>
-  .page-index
-    .no-content
-      text-align: center;
+  .page-index {
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+  }
 
-  /**/
+  .index-left, .index-right {
+    background #fff
+    padding 10px
+    border 1px solid $color_border
+    @media screen and (max-width: $mobile_width) {
+      width: 100% !important
+      margin-bottom: 10px
+    }
+  }
+
+  .index-left {
+    width: 80%
+  }
+
+  .index-banner {
+    background #2f3742
+    height: 300px
+  }
+
+  .index-main {
+    margin-top: 10px
+    background #ccc
+    height calc(100vh - 300px)
+  }
+
+  .index-right {
+    width: 19.5%
+    height 100vh
+  }
+
+  .index-sidebar {
+    height 100%
+    background #3d5a6b
+  }
 </style>
