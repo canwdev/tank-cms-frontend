@@ -7,12 +7,33 @@
           <p>{{ title }}</p>
         </a>
 
-        <div ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
-          <NLink to="/">首页</NLink>
-          <!--<a href="###">分类</a>-->
-          <NLink to="/posts/1">关于</NLink>
-          <NLink to="/warthunder">WarThunder UI</NLink>
-        </div>
+        <ul ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
+
+          <li
+            v-for="root in websiteMenu"
+            :key="root.id"
+            class="link-group"
+          >
+            <a
+              class="link-item"
+              :href="root.url"
+            >
+              {{ root.title }}
+            </a>
+
+            <div class="link-submenu" v-if="root.children">
+              <a
+                v-for="item in root.children"
+                :key="item.id"
+                class="link-item"
+                :href="item.url"
+              >
+                {{ item.title }}
+              </a>
+            </div>
+          </li>
+
+        </ul>
 
         <div class="mobile-menu-shade" :class="{open: openMenu}" @click="openMenu = false"></div>
 
@@ -26,7 +47,8 @@
 </template>
 
 <script>
-  import {SITE_TITLE} from '~/assets/src/utils/config'
+  import { mapState } from 'vuex'
+  import { SITE_TITLE } from '~/assets/src/utils/config'
 
   export default {
     data: () => ({
@@ -34,10 +56,14 @@
       isFixed: false,
       openMenu: false
     }),
+    computed: {
+      ...mapState(['websiteMenu'])
+    },
     watch: {
       openMenu(nv, ov) { // 辅助CSS完整展开收缩动画
         if (nv) {
-          this.$refs.linksWrap.style.height = this.linksWrapHeight + 'px'
+          // TODO: 当屏幕高度不够时处理
+          this.$refs.linksWrap.style.height = this.linksWrapHeight+10 + 'px'
         } else {
           this.$refs.linksWrap.style.height = 0
         }
@@ -49,10 +75,11 @@
       links = Array.prototype.slice.call(links)
       // 用于css height transition动画
       this.linksWrapHeight = 0
+
       links.forEach((v) => {
         this.linksWrapHeight += v.clientHeight
         v.addEventListener('click', () => {
-          this.closeMenu()
+          // this.closeMenu()
           window.scrollTo(0, 0)
         })
       })
@@ -83,10 +110,10 @@
 
 <style lang="stylus">
   $nav_height = 50px
-  navBackground($opacity=0.7)
+  navBackground($opacity= 0.7)
     background-color rgba(0, 0, 0, $opacity)
     backdrop-filter saturate(180%) blur(20px)
-  navOpenMenuTransition($t=0.25s)
+  navOpenMenuTransition($t= 0.25s)
     transition all $t $transition_fx2
 
   .global-nav-wrap
@@ -108,21 +135,25 @@
       // backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid $color_border
       transition all .25s $transition_fx2
+
       &:hover
         background-color #fff
 
       &.fixed
         position: fixed
-        &>.w-container
+
+        & > .w-container
           height $nav_height
+
           .logo-wrap
-            &>img
+            & > img
               width ($nav_height - 12px)
               height ($nav_height - 12px)
-            &>p
+
+            & > p
               font-size 18px
 
-      &>.w-container
+      & > .w-container
         height ($nav_height + 20px)
         display flex
         align-items center
@@ -147,7 +178,7 @@
           &:active
             opacity: 1;
 
-          &>img
+          & > img
             width $nav_height
             height $nav_height
             border-radius 50%
@@ -157,7 +188,7 @@
               width ($nav_height - 12px)
               height ($nav_height - 12px)
 
-          &>p
+          & > p
             font-size 24px
             font-weight: bold
             margin-left: 10px
@@ -166,15 +197,82 @@
               font-size 18px
 
         .links-wrap
+          padding-left: 0
           align-self stretch
           display flex
           align-items center
           text-align: center
-          &>a
-            display inline-block
-            min-width 50px
-            &+a
-              margin-left: 10px
+
+          .link-group {
+            height: 100%
+            display inline-flex
+            align-items center
+            justify-content center
+            position: relative;
+            @media screen and (max-width: $mobile_width) {
+              height auto
+              width: 100%
+              display block
+              overflow: auto
+            }
+
+            &:hover {
+              .link-submenu {
+                display block
+              }
+            }
+          }
+
+          .link-item {
+            display inline-flex
+            padding 0 10px
+            height: 70%
+            align-items center
+            justify-content center
+            @media screen and (max-width: $mobile_width) {
+              height 35px
+              font-weight: bold;
+              width: 100%
+              justify-content flex-start
+            }
+
+            &:hover {
+              text-decoration: none
+              background $color_theme
+              color #fff
+            }
+          }
+
+          .link-submenu {
+            display none
+            position: absolute;
+            top: 85%
+            left 0
+            background #fff
+            border 1px solid $color_border
+
+            @media screen and (max-width: $mobile_width) {
+              border none
+              margin-left: 20px
+              display: block;
+              position unset
+            }
+
+            .link-item {
+              font-size: 14px
+              line-height: 2
+              width: 100%
+              justify-content flex-start
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+
+              @media screen and (max-width: $mobile_width) {
+                font-weight: normal;
+              }
+            }
+          }
+
           @media screen and (max-width: $mobile_width)
             position: absolute
             z-index 100
@@ -192,10 +290,12 @@
               display block
               padding 10px 0
               margin-left: 0 !important
+
             &.open
               background #fff
               height auto
               border-color rgba(255, 255, 255, 0.2)
+
               a
                 opacity 1
 
@@ -215,25 +315,30 @@
               navOpenMenuTransition()
               position: relative
               padding 0
+
               &:before, &:after
                 background $color_theme
                 content: " ";
                 display: block;
                 position: absolute;
                 top: 10px;
-                width: 12px;
+                width: 13px;
                 height: 1px;
                 z-index: 1;
                 navOpenMenuTransition()
+
               &:before
                 right 50%
                 transform: rotate(40deg) scaleY(1.5)
+
               &:after
                 left 39.5%
                 transform: rotate(-40deg) scaleY(1.5)
+
               &.active
                 &:before
                   transform: rotate(-40deg) scaleY(1.5)
+
                 &:after
                   transform: rotate(40deg) scaleY(1.5)
 
@@ -250,8 +355,10 @@
             background transparent
             navOpenMenuTransition(0.7s)
             visibility hidden
+
           &.open
             visibility visible
             background rgba(0, 0, 0, 0.5)
+
   /**/
 </style>

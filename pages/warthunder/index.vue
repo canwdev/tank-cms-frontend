@@ -45,6 +45,7 @@
   import WtCountries from '~/components/WarThunder/WtCountries'
 
   export default {
+    layout: 'empty',
     components: {
       SlideInUp,
       MainMenu,
@@ -137,7 +138,7 @@
     &.bg-darken
       .bg-shadow
         background rgba(0, 0, 0, 0.35)
-        backdrop-filter: blur(1px);
+        // backdrop-filter: blur(1px);
 
   .fg-wrap
     position fixed
