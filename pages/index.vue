@@ -1,7 +1,6 @@
 <template>
   <div class="w-container">
     <div class="page-index">
-
       <div v-if="postData.count > 0">
         <PostsList :post-data="postData"></PostsList>
         <ListPager :page-size="pageSize" :current-page.sync="currentPage" :total="postData.count"></ListPager>
@@ -11,8 +10,6 @@
       </div>
 
     </div>
-
-    <Live2D></Live2D>
   </div>
 
 </template>
@@ -22,27 +19,11 @@
   import ListPager from '~/components/ListPager'
   import { getPostsList } from '~/assets/src/api/website'
   import { backToTop } from '~/assets/src/utils'
-  import Live2D from '~/components/Live2D'
 
   export default {
     layout: 'blog',
     components: {
-      PostsList, ListPager, Live2D
-    },
-    watch: {
-      currentPage(nv) {
-        this.updatePostsList()
-
-        // 更新router query
-        this.$router.replace({
-          path: this.$route.path, query: {
-            ...this.$route.query,
-            page: nv
-          }
-        })
-
-        backToTop(window.document)
-      }
+      PostsList, ListPager
     },
     async asyncData({ route }) {
       let postData = {}
@@ -61,7 +42,22 @@
       return {
         currentPage,
         postData,
-        pageSize,
+        pageSize
+      }
+    },
+    watch: {
+      currentPage(nv) {
+        this.updatePostsList()
+
+        // 更新router query
+        this.$router.replace({
+          path: this.$route.path, query: {
+            ...this.$route.query,
+            page: nv
+          }
+        })
+
+        backToTop(window.document)
       }
     },
     methods: {
