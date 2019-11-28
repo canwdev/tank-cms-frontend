@@ -4,7 +4,7 @@
       <div class="w-container footer-menu-wrap">
         <div class="__links-wrap">
           <div
-            v-for="root in menuTree"
+            v-for="root in websiteMenu"
             :key="root.id"
             class="link-group"
             :class="{'__empty': !root.children}"
@@ -14,7 +14,9 @@
               <li
                 v-for="item in root.children"
                 :key="item.id"
-              ><NLink :to="item.url">{{item.title}}</NLink></li>
+              >
+                <NLink :to="item.url">{{item.title}}</NLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -29,8 +31,8 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import { SITE_TITLE } from '~/assets/src/utils/config'
-  import { getWebsiteMenu } from '~/assets/src/api/website'
 
   export default {
     data() {
@@ -39,13 +41,8 @@
         title: SITE_TITLE
       }
     },
-    mounted() {
-      // TODO: 转移到 vuex
-      getWebsiteMenu().then(res => {
-        this.menuTree = res.data
-      }).catch(e => {
-        console.error(e)
-      })
+    computed: {
+      ...mapState(['websiteMenu'])
     }
   }
 </script>
@@ -68,6 +65,11 @@
     padding 0 0 20px 0
     display flex
     justify-content space-between
+    flex-wrap wrap
+    @media screen and (max-width: $tablet_width) {
+      padding-left: 10px
+      padding-right: 10px
+    }
 
     .__title {
       margin-top: 20px
@@ -78,9 +80,16 @@
       display flex
       flex-wrap wrap
       width 80%
+      @media screen and (max-width: $mobile_width) {
+        width: 100%
+        padding 0 0 20px
+      }
 
       .link-group {
         min-width 150px
+        @media screen and (max-width: $mobile_width) {
+          min-width 33.33%
+        }
 
         &.__empty {
           display none
@@ -101,6 +110,9 @@
 
     .__social-wrap {
       width: 20%
+      @media screen and (max-width: $mobile_width) {
+        width: 100%
+      }
     }
   }
 

@@ -25,9 +25,8 @@
     background url("~assets/images/blog/bg.png") no-repeat center/cover
     background-attachment fixed
     .w-container
-      min-height calc(100vh - 166px)
-      @media screen and (max-width $mobile_width)
-        min-height calc(100vh - 146px)
+      min-height calc(100vh - 292px)
+
     *
       line-height: 1.4
 
