@@ -11,6 +11,10 @@ const API_SERVER_URL = isProduction ? 'https://zencode.top:8099/api' : 'http://l
 module.exports = {
   mode: 'universal',
 
+  cache: {
+    max: 100,
+    maxAge: 1000 * 60 * 15
+  },
   /*
   ** Headers of the page
   */
@@ -48,7 +52,8 @@ module.exports = {
   */
   plugins: [
     '~/plugins/index.js',
-    { src: '~/store/localstorage.js', ssr: false }
+    { src: '~/plugins/swiper', mode: 'client' },
+    { src: '~/store/localstorage.js', mode: 'client' }
   ],
 
   /*

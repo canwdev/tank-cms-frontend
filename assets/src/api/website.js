@@ -7,6 +7,13 @@ export function getWebsiteMeta() {
   })
 }
 
+export function getBanners() {
+  return request({
+    url: '/banner/list',
+    method: 'get'
+  })
+}
+
 export function getWebsiteMenu() {
   return request({
     url: '/menu/list',

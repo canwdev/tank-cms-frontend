@@ -4,7 +4,9 @@
 
       <div class="index-left">
 
-        <div class="index-banner">banner</div>
+        <div class="index-banner">
+          <ActiveSwiper :banners="banners"/>
+        </div>
         <div class="index-main">main1</div>
         <div class="index-main">main2</div>
 
@@ -19,10 +21,25 @@
 </template>
 
 <script>
-  export default {
-    components: {},
-    async asyncData({ route }) {
+  import {getBanners} from '~/assets/src/api/website'
+  import ActiveSwiper from '~/components/ActiveSwiper'
 
+  export default {
+    components: {
+      ActiveSwiper
+    },
+    async asyncData({ route }) {
+      let banners = {}
+
+      await getBanners().then(res => {
+        banners = res.data
+      }).catch(e => {
+        console.error(e)
+      })
+
+      return {
+        banners
+      }
     },
     watch: {},
     methods: {}
@@ -52,7 +69,6 @@
 
   .index-banner {
     background #2f3742
-    height: 300px
   }
 
   .index-main {
