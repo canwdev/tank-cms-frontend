@@ -4,7 +4,7 @@
       <div class="w-container" :class="{open: openMenu}">
         <a href="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
-          <p>{{ title }}</p>
+          <p>{{ websiteInfo.websiteTitle }}</p>
         </a>
 
         <ul ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
@@ -48,16 +48,14 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { SITE_TITLE } from '~/assets/src/utils/config'
 
   export default {
     data: () => ({
-      title: SITE_TITLE,
       isFixed: false,
       openMenu: false
     }),
     computed: {
-      ...mapState(['websiteMenu'])
+      ...mapState(['websiteMenu', 'websiteInfo'])
     },
     watch: {
       openMenu(nv, ov) { // 辅助CSS完整展开收缩动画

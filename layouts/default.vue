@@ -11,11 +11,13 @@
 <script>
   import NavBar from '~/components/NavBar'
   import NavFooter from '~/components/NavFooter'
+  import mixin from '~/assets/src/mixins/default'
 
   export default {
     components: {
       NavBar, NavFooter
-    }
+    },
+    mixins: [mixin]
   }
 </script>
 

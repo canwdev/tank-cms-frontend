@@ -1,5 +1,12 @@
 import request from './request'
 
+export function getWebsiteMeta() {
+  return request({
+    url: '/',
+    method: 'get'
+  })
+}
+
 export function getWebsiteMenu() {
   return request({
     url: '/menu/list',

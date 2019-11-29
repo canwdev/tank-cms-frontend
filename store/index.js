@@ -1,10 +1,10 @@
-import { getWebsiteMenu } from '~/assets/src/api/website'
+import { getWebsiteMeta } from '~/assets/src/api/website'
 
 const LS_SETTINGS = 'website-settings'
 
 export const state = () => ({
-  siteConfig: {
-    title: 'Can\'s Blog'
+  websiteInfo: {
+    websiteTitle: 'websiteTitle'
   },
   settings: {
     hideLive2D: true
@@ -22,6 +22,9 @@ export const mutations = {
   saveSettings(state, { setting, localStorage }) {
     state.settings = Object.assign(state.settings, setting)
     localStorage.setItem(LS_SETTINGS, JSON.stringify(state.settings))
+  },
+  websiteInfo(state, newData) {
+    state.websiteInfo = newData
   },
   setWebsiteMenu(state, newData) {
     state.websiteMenu = newData
@@ -44,8 +47,9 @@ export const actions = {
   // 获取页脚数据
   fetchWebsiteMenu({ commit }, { app }) {
 
-    return getWebsiteMenu().then(res =>{
-      app.store.commit('setWebsiteMenu', res.data)
+    return getWebsiteMeta().then(res =>{
+      app.store.commit('setWebsiteMenu', res.data.menu)
+      app.store.commit('websiteInfo', res.data.websiteInfo)
     }).catch(e => {
       console.error('Error getWebsiteMenu', e)
       app.store.commit('setWebsiteMenu', [])

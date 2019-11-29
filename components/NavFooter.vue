@@ -26,7 +26,7 @@
           <div class="__title">Social Media</div>
         </div>
       </div>
-      <p class="footer-copyright">&copy; {{ new Date().getFullYear() }} {{ title }}, Powered by Nuxt.js</p>
+      <p class="footer-copyright">&copy; {{ new Date().getFullYear() }} {{ websiteInfo.companyName }}, Powered by Nuxt.js</p>
     </div>
   </div>
 </template>
@@ -34,17 +34,10 @@
 <script>
   import {isOutLink} from '~/assets/src/utils'
   import {mapState} from 'vuex'
-  import { SITE_TITLE } from '~/assets/src/utils/config'
 
   export default {
-    data() {
-      return {
-        menuTree: [],
-        title: SITE_TITLE
-      }
-    },
     computed: {
-      ...mapState(['websiteMenu'])
+      ...mapState(['websiteMenu', 'websiteInfo'])
     },
     methods: {
       isOutLink
