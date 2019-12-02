@@ -2,10 +2,10 @@
   <div class="global-nav-wrap">
     <div class="global-nav" :class="{fixed: isFixed}">
       <div class="w-container" :class="{open: openMenu}">
-        <a href="/" class="logo-wrap">
+        <NLink to="/" class="logo-wrap">
           <img src="~/assets/images/icons/avatar.jpg">
           <p>{{ websiteInfo.websiteTitle }}</p>
-        </a>
+        </NLink>
 
         <ul ref="linksWrap" class="links-wrap" :class="{open: openMenu}">
 

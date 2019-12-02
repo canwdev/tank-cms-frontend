@@ -7,8 +7,10 @@
         <div class="index-banner">
           <ActiveSwiper :banners="banners"/>
         </div>
-        <div class="index-main">main1</div>
-        <div class="index-main">main2</div>
+        <div class="index-main">
+          <PostsList :post-data="postData"/>
+          <NLink to="/posts" class="__more">更多文章</NLink>
+        </div>
 
       </div>
       <div class="index-right">
@@ -21,24 +23,35 @@
 </template>
 
 <script>
-  import {getBanners} from '~/assets/src/api/website'
+  import {getBanners, getPostsList} from '~/assets/src/api/website'
   import ActiveSwiper from '~/components/ActiveSwiper'
+  import PostsList from '~/components/PostsList'
 
   export default {
     components: {
-      ActiveSwiper
+      ActiveSwiper,
+      PostsList
     },
     async asyncData({ route }) {
       let banners = {}
+      let postData = {}
 
       await getBanners().then(res => {
         banners = res.data
       }).catch(e => {
         console.error(e)
       })
+      await getPostsList({
+        limit: 5,
+        offset: 0
+      }).then(res => {
+        postData = res.data
+      }).catch(e => {
+        console.error(e)
+      })
 
       return {
-        banners
+        banners,postData
       }
     },
     watch: {},
@@ -68,22 +81,23 @@
   }
 
   .index-banner {
-    background #2f3742
   }
 
   .index-main {
     margin-top: 10px
-    background #ccc
-    height calc(100vh - 300px)
+    min-height calc(100vh - 300px)
+    .__more {
+      display block
+      text-align: right;
+      margin-top: 10px
+    }
   }
 
   .index-right {
     width: 19.5%
-    height 100vh
+    height fit-content
   }
 
   .index-sidebar {
-    height 100%
-    background #3d5a6b
   }
 </style>

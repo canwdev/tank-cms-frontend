@@ -1,7 +1,7 @@
 <template xmlns:v-swiper="http://www.w3.org/1999/xhtml">
   <div class="active-swiper" :class="{light: lightTheme}">
 
-    <div v-swiper:mySwiper="swiperOption" class="swiper-container">
+    <div v-if="banners && banners.length > 0" v-swiper:mySwiper="swiperOption" class="swiper-container">
       <div class="swiper-wrapper">
         <div v-for="(item,i) in banners" :key="i" class="swiper-slide">
           <a :href="item.url">
@@ -22,14 +22,13 @@
 
     </div>
 
-    <!--要求在第一张轮播时隐藏-->
-    <!--    <div class="hide-first"></div>-->
-
+    <div v-else>
+      Banner 无数据。
+    </div>
   </div>
 </template>
 
 <script>
-  import { formatDate } from '~/assets/src/utils'
   import 'swiper/dist/css/swiper.min.css'
 
   export default {
@@ -70,23 +69,6 @@
 <style lang="stylus" scoped>
   .active-swiper
     position relative
-    .hide-first
-      position: absolute
-      top 0
-      bottom 0
-      left 0
-      width 20%
-      background #fff
-      z-index 999
-    &.light
-      .swiper-slide
-        text-align: left
-
-        .sl--desc
-          & > h3
-            color: #000000
-          & > p
-            color: #7B7B7B
 
   .swiper-container
     width: 100%
@@ -100,7 +82,7 @@
     .sl--img
       width 100%
       height 0
-      padding-bottom 40%
+      padding-bottom 50%
       position: relative
 
       & > img
