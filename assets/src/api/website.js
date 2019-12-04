@@ -36,3 +36,10 @@ export function getPostDetail(params) {
     params
   })
 }
+
+export function getRecruits() {
+  return request({
+    url: '/recruit/list',
+    method: 'get'
+  })
+}

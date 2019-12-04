@@ -17,8 +17,8 @@
         </div>
       </div>
       <!-- Navigation -->
-      <div class="swiper-button-next" :class="{'swiper-button-black': lightTheme, 'swiper-button-white': !lightTheme}" />
-      <div class="swiper-button-prev" :class="{'swiper-button-black': lightTheme, 'swiper-button-white': !lightTheme}" />
+      <div class="swiper-button-next"/>
+      <div class="swiper-button-prev"/>
 
     </div>
 
@@ -131,7 +131,7 @@
     right 0
     background url("~assets/images/icons/swiper-arrow-right.svg")
 
-  .swiper-button-white, .swiper-button-black
+  .swiper-button
     top 22px
     height 100%
     background-position center
