@@ -1,4 +1,4 @@
-# node-blog-frontend
+# tank-cms-frontend
 
 > My best Nuxt.js project
 
