@@ -4,7 +4,10 @@
     <div v-if="banners && banners.length > 0" v-swiper:mySwiper="swiperOption" class="swiper-container">
       <div class="swiper-wrapper">
         <div v-for="(item,i) in banners" :key="i" class="swiper-slide">
-          <a :href="item.url">
+          <a
+            :href="item.url"
+            :target="isOutLink(item.url)?'_blank':null"
+          >
             <div class="sl--img">
               <img :src="item.img">
 
@@ -17,8 +20,8 @@
         </div>
       </div>
       <!-- Navigation -->
-      <div class="swiper-button-next"/>
-      <div class="swiper-button-prev"/>
+      <div class="swiper-button swiper-button-next"/>
+      <div class="swiper-button swiper-button-prev"/>
 
     </div>
 
@@ -30,6 +33,7 @@
 
 <script>
   import 'swiper/dist/css/swiper.min.css'
+  import {isOutLink} from '~/assets/src/utils'
 
   export default {
     props: {
@@ -62,7 +66,10 @@
         observeParents: true,
         observer: true
       }
-    })
+    }),
+    methods: {
+      isOutLink
+    }
   }
 </script>
 
@@ -102,7 +109,6 @@
       right 0
       text-align: left;
       display: inline-block;
-      opacity: 0;
       transition-duration: 1.2s;
       word-break break-word
       padding 10px 55px
@@ -138,12 +144,9 @@
     background-repeat no-repeat
     background-size 20px
     width 50px
+
     &:hover
       background-color rgba(0, 0, 0, 0.3)
-
-  .swiper-slide-active
-    .sl--desc
-      opacity: 1;
 
   /**/
 

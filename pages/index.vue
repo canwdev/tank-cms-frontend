@@ -8,7 +8,7 @@
           <ActiveSwiper :banners="banners"/>
         </div>
         <div class="index-main">
-          <PostsList :post-data="postData"/>
+          <PostsList :post-list="postList"/>
           <NLink to="/posts" class="__more">更多文章</NLink>
         </div>
 
@@ -34,7 +34,7 @@
     },
     async asyncData({ route }) {
       let banners = {}
-      let postData = {}
+      let postList = []
 
       await getBanners().then(res => {
         banners = res.data
@@ -45,13 +45,14 @@
         limit: 5,
         offset: 0
       }).then(res => {
-        postData = res.data
+        postList = res.data
       }).catch(e => {
         console.error(e)
       })
 
       return {
-        banners,postData
+        banners,
+        postList
       }
     },
     watch: {},

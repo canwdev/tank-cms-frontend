@@ -1,7 +1,7 @@
 <template>
   <div class="post-list-wrap">
 
-    <NLink v-for="(v, i) in postData.rows" :key="i" :to="'posts/'+v.id" class="list-item">
+    <NLink v-for="(v, i) in postList" :key="i" :to="'posts/'+v.id" class="list-item">
       <h3>{{ v.title }}</h3>
       <span class="update-time">{{ formatTime(new Date(v.updatedAt)) }}</span>
       <p>{{ v.content }}</p>
@@ -15,12 +15,9 @@
 
   export default {
     props: {
-      postData: {
-        type: Object,
-        default: () => ({
-          count: 0,
-          rows: []
-        })
+      postList: {
+        type: Array,
+        default: () => ([])
       }
     },
     methods: {
